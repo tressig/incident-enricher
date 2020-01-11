@@ -1,0 +1,21 @@
+//Java is necessary to run 'jar' and com.moowork.node allows execution of npm commands
+plugins {
+	id 'java'
+	id 'com.moowork.node' version '1.2.0'
+}
+
+node {
+	version = '12.14.1'
+	npmVersion = '6.13.4'
+	download = true
+}
+
+//The jar combining server and client code depends on npm_run_build on the client code
+jar.dependsOn 'npm_run_build'
+
+
+//Built client code will be available in dist
+//We want to copy into the 'static' directory of the jar
+jar {
+	from 'dist/IncidentEnricherClient' into 'static'
+}

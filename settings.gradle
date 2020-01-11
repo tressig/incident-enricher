@@ -1,0 +1,3 @@
+rootProject.name = 'incident-enricher'
+
+include 'server', 'client'
